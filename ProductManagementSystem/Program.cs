@@ -19,6 +19,7 @@ namespace ProductManagementSystem
                 Console.WriteLine("3. Search Product by Id");
                 Console.WriteLine("4. Filter Products by Price");
                 Console.WriteLine("5. Remove Product");
+                Console.WriteLine("6. Update Product");
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter your choice: ");
 
@@ -98,8 +99,30 @@ namespace ProductManagementSystem
 
                         bool isremoved = productService.RemoveProduct(removeId);
                         if (isremoved) { Console.WriteLine("Product removed successfully!"); }
-                        else { Console.WriteLine("sorry because you enter id is not valid so enter valid id "); }
+                        else { Console.WriteLine("sorry because you enter id is not valid so enter valid id ");}
+                            Console.WriteLine("Product removed successfully!");
                         break;
+                    case 6:
+                        Console.Write("Enter Product Id to update: ");
+                        int updateId = Convert.ToInt32(Console.ReadLine());
+
+                        Console.Write("Enter New Product Name: ");
+                        string newName = Console.ReadLine();
+
+                        Console.Write("Enter New Price: ");
+                        decimal newPrice = Convert.ToDecimal(Console.ReadLine());
+
+                        Console.Write("Enter New Quantity: ");
+                        int newQty = Convert.ToInt32(Console.ReadLine());
+
+                        bool isUpdated = productService.UpdateProduct(updateId, newName, newPrice, newQty);
+
+                        if (isUpdated)
+                            Console.WriteLine("Product updated successfully!");
+                        else
+                            Console.WriteLine("Product not found!");
+                        break;
+
 
                     case 0:
                         Console.WriteLine("Exiting application...");

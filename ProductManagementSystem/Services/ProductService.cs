@@ -31,7 +31,6 @@ namespace ProductManagementSystem.Services
         }
         public bool RemoveProduct(int id)
         {
-            var id1 = products.FirstOrDefault(p => p.Id == id);
             var product = GetProductById(id);
             if (product != null)
             {
@@ -40,6 +39,21 @@ namespace ProductManagementSystem.Services
             }
             return false;
         }
+        public bool UpdateProduct(int id, string name, decimal price, int quantity)
+        {
+            var product = GetProductById(id);
+
+            if (product != null)
+            {
+                product.Name = name;
+                product.Price = price;
+                product.quantity = quantity;
+                return true;
+            }
+
+            return false;
+        }
     }
+
 
 }
